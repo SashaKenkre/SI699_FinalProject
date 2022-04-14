@@ -41,6 +41,7 @@ Next, we moved to mask detection where we used Haarcascades to find the nose and
 
 ![Mask Detect](https://drive.google.com/file/d/16SonwkiNJgvtvwRbkPkPMRZ3cXrAnym7/view?usp=sharing)
 
+### Accuracy
 Once we had these values, we found our model’s accuracy for both mask on and no mask. We took the sum of our correct mask predictions and divided by the total number of images. Then we did the same for no mask prediction. We also did this for + or - 1 because some of the predictions were off by 1. We had a higher accuracy when we did + or - 1. 
 
 ![Accuracy](https://drive.google.com/file/d/14lg2MyB7t3nSPdpAK8f53W1mFtUy0JmP/view?usp=sharing)
