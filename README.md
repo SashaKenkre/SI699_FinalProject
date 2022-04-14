@@ -5,10 +5,10 @@
 This is a capstone project for SI 699 at UMSI Winter 2022.
 
 ## Project Goal
-With the COVID-19 pandemic, it has become increasingly important for people to wear masks to protect themselves and others from catching the virus.Our goal is to create a model to detect if people are Wearing masks or Not wearing masks/wearing masks improperly.
+With the COVID-19 pandemic, it has become increasingly important for people to wear masks to protect themselves and others from catching the virus. Our goal is to create a model to detect if people are Wearing masks or Not wearing masks/wearing masks improperly.
 
 ## Potential Customers and Value
-Our potential customers are organizations seeking to monitor the masking of individuals such as: 
+Our potential customers are organizations seeking to monitor the masking of individuals such as:
 
 - Government agencies
 
@@ -32,12 +32,12 @@ We used Vocareum/AWS to host our images and csv files. All our images were read 
 ### Face Detection
 Our Kaggle data came with annotations for images which provided the number of people in the image wearing a mask and not wearing a mask.
 
-We used MTCNN and Haarcascade for face detection. We first ran MTCNN and checked if the number of faces found matched the number of people from annotations, if not, we used Haarcascade. Then, we had a list of conditionals based on the face count from MTCNN and Haarcascade to see which was more accurate and would be used for mask detection. We saved that value and the model used for face detection in our dataframe. If the predicted number of faces were equal to the actual number of faces, we assigned 1 to corr_pred, else 0.
+We used MTCNN and Haarcascade for face detection. We first ran MTCNN and checked if the number of faces found matched the number of people from annotations, if not, we used Haarcascade. Then, we had a list of conditionals based on the face count from MTCNN and Haarcascade to see which was more accurate and would be used for mask detection. We saved that value and the model used for face detection in our dataframe. If the predicted number of faces were equal to the actual number of faces, we assigned 1 to `corr_pred`, else 0.
 
 ![Face Detect](https://github.com/bulgaan/SI699_FinalProject/images/face_detect.png)
 
 ### Mask Detection
-Next, we moved to mask detection where we used Haarcascades to find the nose and mouth in each image. The face would be detected using the above dataframe based on what was in the ‘detect_type’ column, then we would move to finding the nose and mouth within the found faces. If a nose and mouth were found, the count for no mask increased, and if no nose or mouth were found we increased the count for proper mask. Again, this was added into our dataframe, and if the predicted number of proper/improper masks were equal to the actual numbers, we assigned 1 to corr_pred, else 0.
+Next, we moved to mask detection where we used Haarcascades to find the nose and mouth in each image. The face would be detected using the above dataframe based on what was in the `detect_type` column, then we would move to finding the nose and mouth within the found faces. If a nose and mouth were found, the count for no mask increased, and if no nose or mouth were found we increased the count for proper mask. Again, this was added into our dataframe, and if the predicted number of proper/improper masks were equal to the actual numbers, we assigned 1 to `corr_pred`, else 0.
 
 ![Mask Detect](https://github.com/bulgaan/SI699_FinalProject/images/mask_detect.png)
 
@@ -55,29 +55,22 @@ Once we had these values, we found our model’s accuracy for both mask on and n
 | Dataset 2 (± 1) | 74.8%|84%   | 92.7%  |
 
 ## Required Packages to Import
-```
-import boto3
-import cv2
-from matplotlib.patches import Circle, Rectangle
-from matplotlib import pyplot as plt
-import matplotlib.image as mpimg
-from matplotlib.pyplot import imshow
-from mtcnn.mtcnn import MTCNN
-import numpy as np
-from numpy import asarray
-import os
-from os import listdir
-from os.path import isfile, join
-import pandas as pd
-import PIL
-from PIL import Image, ImageOps
-import random
-import requests
-%matplotlib inline
-```
 
-### Haarcascade from files
-- haarcascade_frontalface_default.xml
-- haarcascade_profileface.xml
-- haarcascade_nose.xml
-- haarcascade_mouth.xml
+- `boto3`
+- `cv2`
+- `matplotlib`
+- `mtcnn`
+- `numpy`
+- `os`
+- `pandas`
+- `PIL`
+- `random`
+- `requests`
+
+## Required Haarcascade files
+- `haarcascade_frontalface_default.xml`
+- `haarcascade_profileface.xml`
+- `haarcascade_nose.xml`
+- `haarcascade_mouth.xml`
+
+Haarcasscade files sourced from [this GitHub repository](https://github.com/Poojan66/facedetection).
