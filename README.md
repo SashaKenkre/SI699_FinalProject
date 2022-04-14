@@ -39,7 +39,7 @@ We used MTCNN and Haarcascade for face detection. We first ran MTCNN and checked
 ### Mask Detection
 Next, we moved to mask detection where we used Haarcascades to find the nose and mouth in each image. The face would be detected using the above dataframe based on what was in the `detect_type` column, then we would move to finding the nose and mouth within the found faces. If a nose and mouth were found, the count for no mask increased, and if no nose or mouth were found we increased the count for proper mask. Again, this was added into our dataframe, and if the predicted number of proper/improper masks were equal to the actual numbers, we assigned 1 to `corr_pred`, else 0.
 
-![Mask Detect](https://github.com/bulgaan/SI699_FinalProject/blob/main/images/mask_detect.png)
+![Mask Detect](images/mask_detect.png?raw=true)
 
 ### Accuracy
 Once we had these values, we found our model’s accuracy for both mask on and no mask. We took the sum of our correct mask predictions and divided by the total number of images. Then we did the same for no mask prediction. We also did this for + or - 1 because some of the predictions were off by 1. We had a higher accuracy when we did + or - 1.
