@@ -73,4 +73,4 @@ Once we had these values, we found our model’s accuracy for both mask on and n
 - `haarcascade_nose.xml`
 - `haarcascade_mouth.xml`
 
-Haarcasscade files sourced from [this GitHub repository](https://github.com/Poojan66/facedetection).
+Haarcascade files sourced from [this GitHub repository](https://github.com/Poojan66/facedetection).
